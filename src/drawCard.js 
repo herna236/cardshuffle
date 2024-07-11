@@ -1,0 +1,15 @@
+import axios from 'axios';
+
+const drawCard = async (deckId) => {
+  try {
+    const res = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
+    console.log('Drawn card:', res.data.cards[0]); // Logging drawn card data
+    return res.data.cards[0]; // Returning drawn card data
+  } catch (error) {
+    console.error('Error drawing card:', error); // Error handling
+    throw error; // Throwing error for further handling
+  }
+};
+
+export default drawCard; // Exporting drawCard function as default
+
