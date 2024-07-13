@@ -19,9 +19,10 @@ function App() {
       }
     };
 
-    fetchDeckData(); // Call fetchDeckData function
+    fetchDeckData(); // Call fetchDeckData function.
   }, []);
 
+  console.log(remainingCards)
   const handleDrawCard = async () => {
     try {
       if (!deckData || !deckData.deck_id) {
@@ -29,8 +30,9 @@ function App() {
         return;
       }
 
-      const drawn = await drawCard(deckData.deck_id); // Draw a card from current deck
-      setDrawnCard(drawn); // Set drawnCard state with drawn card data
+      const drawn = await drawCard(deckData.deck_id); 
+      console.log('drawn', drawn)// Draw a card from current deck
+      setDrawnCard(drawn.cards[0]); // Set drawnCard state with drawn card data
       setRemainingCards(drawn.remaining); // Update remainingCards state with new remaining count
     } catch (error) {
       alert('Error: no cards remaining! please select a new deck'); // Alert if no cards remaining

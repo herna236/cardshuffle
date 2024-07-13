@@ -5,7 +5,7 @@ const drawCard = async (deckId) => {
     const res = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
     if (res.data.success) {
       console.log(res.data)
-      return res.data.cards[0];
+      return res.data;
       
     } else {
       throw new Error('No cards remaining in the deck.');
